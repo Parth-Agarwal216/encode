@@ -170,7 +170,7 @@ MERN-stack based survey form application
 This directory contains the dashboard app code, which is deployed using render app.
 
 - `app.py` Python app for the survey analytics dashboard built using dash & plotly.
-- `summary.py` Contains code to create summary of the survey responses using LLMs.
+- `summary.py` Contains code to create or update the summary of the survey responses dynamically using LLMs.
 - `credentials.json` JSON file containing mongoDB URI and other API keys.
 
 
