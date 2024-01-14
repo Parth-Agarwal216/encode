@@ -72,9 +72,9 @@ https://github.com/Parth-Agarwal216/render-nps
 
 1. The owner installs the snap-in in the DevRev platform. 
 2. We provide a configuration page for the snap-in where we provide the owner with option to customize various aspects of the survey form and the snap in. 
-    - We ask the owner to submit their PAT token which is used in a API call to create the mailing list.
-    - We then ask the user to modify various aspects of the survey form including changing the email through which the survey form will be sent, Name of the company, Name of the product and content of the survey form.  
-    - We also provide the user to configure the settings for the slack and PLuG integrations.
+    - We ask the owner to submit their PAT token which is used in an API call to create the mailing list.
+    - We then ask the owner to modify various aspects of the survey form including changing the email through which the survey form will be sent, name of the company, Name of the product and content of the survey form.  
+    - We also provide the owner to configure the settings for the slack and PLuG integrations.
     - We provide the owner with the option to select when the survey should be first distributed, how often it is distributed and how often the system should check the status of survey distributions and responses.
 
 
