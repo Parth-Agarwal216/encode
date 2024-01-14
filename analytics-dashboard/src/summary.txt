@@ -1,6 +1,0 @@
-Apple Pay Integration: Customers face severe issues with Apple Pay payments, leading to site crashes and transaction failures during mobile checkouts.
-Refund Process: Several customers find the refund process overly complicated, involving multiple departments and prolonged waiting times. A more direct and efficient refund system is desired.
-2 Factor Authentication: Users report difficulties in setting up 2-factor authentication, with some experiencing glitches in the second step, preventing them from receiving the authentication code.
-Chatbot for Customer Support: The chatbot's unresponsiveness and generation of irrelevant answers are noted issues, impacting the effectiveness of customer support.
-Overall Service Quality: Positive feedback regarding consistent and stress-free financial transactions, showcasing the company's commitment to providing quality service.
-General Satisfaction: While meeting basic needs, customers express a desire for the company to go above and beyond in various aspects.
