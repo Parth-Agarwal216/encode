@@ -11,7 +11,7 @@ os.environ['OPENAI_API_KEY'] = creds['OpenAI_Key']
 
 initial_summary_template = '''You are an AI expert in textual analysis, with a specific focus on distilling customer feedback from surveys into clear, concise summaries. 
 
-Guidelines for generating summaries:
+Guidelines for generating summaries:ch
 
 1: Start by identifying and grouping responses that refer to the same feature.
 
@@ -75,8 +75,9 @@ summary_updation_chain = LLMChain(llm= ChatOpenAI(temperature = 0.0, model =  "g
 
 def get_summary(response_string):
 
-    if os.path.getsize("summary.txt") == 0:
+    if os.path.exists("summary.txt") == False:
         summary = initial_summary_chain.run(RESPONSES = response_string)
+
     else:
         with open("summary.txt") as f:
             old_summary = f.read()
