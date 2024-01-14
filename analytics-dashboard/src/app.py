@@ -192,10 +192,12 @@ product_yn_bar.update_layout(
 
 ## Summary Generation ##
 response_string = f""
-for i in range(10):
-  response_string += f"Response {i + 1} : {nps_data['review'].iloc[i]} \n" 
+ct = 0
+for idx in nps_data[nps_data['summarised'] == False].index:
+    response_string += f"Response {ct + 1} : {nps_data.loc[idx, 'review']} \n" 
+    ct+=1
 
-summary = initial_summary_chain.run(RESPONSES = response_string)
+summary = get_summary(response_string)
 summary_points = summary.split('\n')
 
 ## ---------------- ##
