@@ -78,8 +78,6 @@ We again use Render to deploy our generated analytics dashboard . You will have 
 The code for the survey form is available in the analytics-dashboard folder and here:<br>
 https://github.com/Parth-Agarwal216/render-nps
 
-https://github.com/SpyzzVVarun/encode/assets/106423963/30db4bfb-3075-4810-aeeb-a4d47c11c73c
-
 ## Solution Pipeline & Usage Guide
 
 1. The owner installs the snap-in in the DevRev platform. 
@@ -98,7 +96,7 @@ https://github.com/SpyzzVVarun/encode/assets/106423963/30db4bfb-3075-4810-aeeb-a
 4. The system offers real-time analysis capabilities, including sentiment analysis, identification of actionable issues, and ticket creation, all facilitated by large language models (LLMs). The system filters responses to identify actionable feedback and uses LLMs to assist in ticket management. This includes generating ticket titles, determining ticket severity, and selecting relevant PARTs for ticket submission, with other parameters sourced via DevRev API calls.
 5. On the analytics side, responses from the surveys are stored in MongoDB. A summary report is then generated and updated in batches, with the dashboard reflecting these updates at predetermined intervals.
 
-![Snap-in Configuration Page]("/assets/analytics_dashboard.jpg")
+https://github.com/SpyzzVVarun/encode/assets/106423963/30db4bfb-3075-4810-aeeb-a4d47c11c73c
 
 ## Project Architecture
 
