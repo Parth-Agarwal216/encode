@@ -17,7 +17,7 @@ Our aim here was to build a mechanism to create a customized NPS Survey and send
 
 ### 2. Meaningful Analytics & Insights
 
-We do sentiment analysis of the customer survey response and also determine if it has any actionable insights in real-time. A summary report of collected responses is maintained which is timely updated. This report highlights the specific key issues and their related features. We also highlight positive feedback and features which receive praises. A dashboard is provided to visualize the derived analytics.
+We do sentiment analysis of the customer survey response and also determine if it has any actionable insights in real-time. A summary report of collected responses is maintained which is timely updated. This report highlights the specific key issues and their related features. We also highlight positive feedback and features which receive praises. A dashboard is provided to visualize the derived analytics, like nps score over time, distribution of promoters, passives and detractors and also wordclouds to focus on positive and negative feedback separately.
 
 
 ### 3. Dealing with Spam Surveys
