@@ -173,4 +173,6 @@ This directory contains the dashboard app code, which is deployed using render a
 - `summary.py` Contains code to create or update the summary of the survey responses dynamically using LLMs.
 - `credentials.json` JSON file containing mongoDB URI and other API keys.
 
+## Demo Video
 
+https://drive.google.com/file/d/17YharkmL-dOdl3Ja4BmUkyAkYfDPJRlZ/view?usp=sharing
