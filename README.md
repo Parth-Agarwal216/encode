@@ -30,7 +30,8 @@ We've incorporated a CAPTCHA verification step at the start of our survey form t
 
 ### 5. Continuous Improvement Cycle.
 
-We've implemented an **automated ticket generation system** that responds dynamically to incoming survey responses. To prevent duplicate tickets for the same issue, we conduct a similarity check between the new response and existing ones. If the response pertains to a novel issue, our system leverages AI to automatically generate a title and extract the relevant portion of the issue. Subsequently, we employ Devrev API calls to initiate the creation of a new ticket.
+We've implemented an automated ticket generation system that works in real-time. For every actionable response with a negative sentiment, a ticket will be created using the works create api where we have used LLMs to generate the title, its severity and figure out the PART it belongs to. Along with that we used several API calls to determine the other parameters that are to be filled. A report/summary, created by LLMs, that summarizes the overall feedback is also maintained. It is dynamically updated in real-time as new responses come in, keeping in mind old summary and new responses.
+
 
 
 ## Installation and Setup
