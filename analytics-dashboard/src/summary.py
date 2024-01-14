@@ -69,3 +69,24 @@ initial_summary_chain = LLMChain(llm= ChatOpenAI(temperature = 0.0, model =  "gp
 summary_updation_chain = LLMChain(llm= ChatOpenAI(temperature = 0.0, model =  "gpt-3.5-turbo-1106"),
                         prompt= summary_updation_prompt,
                         verbose=True)
+
+
+# summary = initial_summary_chain.run(RESPONSES = response_string)
+
+def get_summary(response_string):
+
+    if os.path.getsize("summary.txt") == 0:
+        summary = initial_summary_chain.run(RESPONSES = response_string)
+    else:
+        with open("summary.txt") as f:
+            old_summary = f.read()
+
+        with open('summary.txt', 'w'):
+            pass
+
+        summary = summary_updation_chain.run(OLD_SUMMARY = old_summary,  NEW_RESPONSES = response_string)
+
+    with open("summary.txt", "w") as text_file:
+            text_file.write(summary)
+    
+    return summary
