@@ -78,6 +78,8 @@ We again use Render to deploy our generated analytics dashboard . You will have 
 The code for the survey form is available in the analytics-dashboard folder and here:<br>
 https://github.com/Parth-Agarwal216/render-nps
 
+https://github.com/SpyzzVVarun/encode/assets/106423963/30db4bfb-3075-4810-aeeb-a4d47c11c73c
+
 ## Solution Pipeline & Usage Guide
 
 1. The owner installs the snap-in in the DevRev platform. 
