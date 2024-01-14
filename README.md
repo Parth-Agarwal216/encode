@@ -13,7 +13,7 @@ The challenge is to develop an AI-powered snap-in for NPS Survey collection, sto
 
 ### 1. Build a mechanism to create a customized NPS Survey and send it out at pre decided intervals to a pre decided audience and collect the survey results. 
 
-1. Our NPS Survey form has different lines of questioning for promoters, passives and detractors along with several other customizations based on the inputs of the snap-in configuration page.
+1. Our NPS Survey form has different lines of questioning for promoters, passives and detractors along with several other customizations based on the inputs taken from the snap-in configuration page.
 
 2. We take as input the survey frequency and start date in the snap-in configuraton page.
 
@@ -21,7 +21,7 @@ The challenge is to develop an AI-powered snap-in for NPS Survey collection, sto
 
 ### 2. Develop a system to derive meaningful analytics and insights from NPS survey results. These insights should aid in enhancing the product or service based on customer feedback.
 
-1. We do sentiment analysis of the customer survey response and determine if it is actionable in real-time.
+1. We do sentiment analysis of the customer survey response and determine if it has any actionable insights in real-time.
 A summary report of collected responses is maintained which is timely updated. This report highlights the specific key issues and their related features. We also highlight positive feedback and features which receive praises.
 A dashboard is provided to visualize the derived analytics.
 
@@ -32,7 +32,7 @@ A dashboard is provided to visualize the derived analytics.
 
 2. Additionally, we request survey participants to provide their email addresses, enabling us to ensure that only one survey response can be submitted from a given email within a predetermined timeframe. 
 
-3. We also apply AI techniques to figure out if the review contains any actionable insights or not. This helps us filter out the spam surveys. 
+3. We also use LLMs to figure out if the review contains any actionable insights or not. This helps us filter out the spam surveys. 
 
 
 ### 4. Build a robust system to protect customer information. Guarantee the confidentiality and privacy of users while collecting valuable feedback. 
@@ -42,7 +42,7 @@ A dashboard is provided to visualize the derived analytics.
 
 ### 5. Create a feedback loop that dynamically adjusts based on NPS survey results. Develop a mechanism for real-time adjustments and improvements in the product or service, fostering a continuous improvement cycle.
 
-1. We've implemented an automated ticket generation system that responds dynamically to incoming survey responses. To prevent duplicate tickets for the same issue, we conduct a similarity check between the new response and existing ones. If the response pertains to a novel issue, our system leverages AI to automatically generate a title and extract the relevant portion of the issue. Subsequently, we employ Devrev API calls to initiate the creation of a new ticket.
+1. We've implemented an **automated ticket generation system** that responds dynamically to incoming survey responses. To prevent duplicate tickets for the same issue, we conduct a similarity check between the new response and existing ones. If the response pertains to a novel issue, our system leverages AI to automatically generate a title and extract the relevant portion of the issue. Subsequently, we employ Devrev API calls to initiate the creation of a new ticket.
 
 
 ## Installation and Setup
