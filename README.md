@@ -86,9 +86,17 @@ https://github.com/Parth-Agarwal216/render-nps
     - We then ask the user to modify various aspects of the survey form including changing the email through which the survey form will be sent, Name of the company, Name of the product and content of the survey form.  
     - We also provide the user to configure the settings for the slack and PLuG integrations.
     - We provide the owner with the option to select when the survey should be first distributed, how often it is distributed and how often the system should check the status of survey distributions and responses.
+
+![Snap-in Configuration Page](/assets/config_one.jpg) ![Snap-in Configuration Page](/assets/config_two.jpg)
+
 3. For survey distribution, the owner must create a "Surveys" product (PART) and then create an issue under this PART to generate and send the survey to the mailing list. 
+
+![Snap-in Configuration Page]("/assets/analytics_dashboard_(1).jpg")
+
 4. The system offers real-time analysis capabilities, including sentiment analysis, identification of actionable issues, and ticket creation, all facilitated by large language models (LLMs). The system filters responses to identify actionable feedback and uses LLMs to assist in ticket management. This includes generating ticket titles, determining ticket severity, and selecting relevant PARTs for ticket submission, with other parameters sourced via DevRev API calls.
-5. On the analytics side, responses from the surveys are stored in MongoDB. A summary report is then generated and updated in batches, with the dashboard reflecting these updates at predetermined intervals. 
+5. On the analytics side, responses from the surveys are stored in MongoDB. A summary report is then generated and updated in batches, with the dashboard reflecting these updates at predetermined intervals.
+
+![Snap-in Configuration Page]("/assets/analytics_dashboard.jpg")
 
 ## Project Architecture
 
@@ -168,5 +176,12 @@ MERN-stack based survey form application
 - `constants.json` A configuration or settings file for the client-side.
 - `index.css` The main stylesheet for the web application.
 - `json.js` This could be a file handling JSON data, possibly related to the survey questions or configuration.
+
+### Analytics Dashboard 
+This directory contains the dashboard app code, which is deployed using render app.
+
+- `app.py` Python app for the survey analytics dashboard built using dash & plotly.
+- `summary.py` Contains code to create summary of the survey responses using LLMs.
+- `credentials.json` JSON file containing mongoDB URI and other API keys.
 
 
