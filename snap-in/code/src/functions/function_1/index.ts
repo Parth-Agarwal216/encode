@@ -175,23 +175,23 @@ async function handleEvent(
   if ((workCreated.type == "issue" && mailingList[0].name !== "error" && workCreated.applies_to_part.name == "Surveys")){
     await commitJsonChange(jsonFilePathBackend, jsonUpdatesBackend);
     await commitJsonChange(jsonFilePathClient, jsonUpdatesClient);
-    const loading = await devrevSDK.timelineEntriesCreate(loadBody as any);
-    setTimeout(async () => {
-        const response = await devrevSDK.timelineEntriesCreate(body as any);
-        const mailPromises = mailingList.map(mailId => 
-            sendMail(mailId.email, startDate, servuct, companyName, mailId.name));
+    // const loading = await devrevSDK.timelineEntriesCreate(loadBody as any);
+    // setTimeout(async () => {
+    //     const response = await devrevSDK.timelineEntriesCreate(body as any);
+    //     const mailPromises = mailingList.map(mailId => 
+    //         sendMail(mailId.email, startDate, servuct, companyName, mailId.name));
         
-        Promise.all(mailPromises).then(() => {
-            console.log('All emails sent');
-        });
-    }, 180000);
+    //     Promise.all(mailPromises).then(() => {
+    //         console.log('All emails sent');
+    //     });
+    // }, 180000);
 
-    // const response = await devrevSDK.timelineEntriesCreate(body as any);
-    // const mailPromises = mailingList.map(mailId => sendMail(mailId.email, startDate, servuct, companyName, mailId.name));
-    // Promise.all(mailPromises).then(() => {
-    //   console.log('All emails sent');
-    // });
-    // return response;
+    const response = await devrevSDK.timelineEntriesCreate(body as any);
+    const mailPromises = mailingList.map(mailId => sendMail(mailId.email, startDate, servuct, companyName, mailId.name));
+    Promise.all(mailPromises).then(() => {
+      console.log('All emails sent');
+    });
+    return response;
   }
   if ((workCreated.type == "issue" && mailingList[0].name !== "error" && workCreated.applies_to_part.name == "Surveys")){
     const rejectBody = {
