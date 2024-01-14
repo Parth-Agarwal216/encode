@@ -78,13 +78,17 @@ We again use Render to deploy our generated analytics dashboard . You will have 
 The code for the survey form is available in the analytics-dashboard folder and here:<br>
 https://github.com/Parth-Agarwal216/render-nps
 
-## Usage Guide
-Our project architecture starts with the owner installing the snap-in in the devrev platform. We provide a configuration page for the snap-in where we provide the owner with option to customize various aspects of the survey form and the snap in. We ask the owner to submit their PAT token which is used in a API call to create the mailing list. We then provide the user to modify various aspects of the survey form including changing the email through which the survey form will be sent, Name of the company, Name of the product and content of the survey form.  We also provide the user to configure the settings for the slack and PLuG integrations. We provide the owner with the option to select when the survey should be first distributed, how often it is distributed and how often the system should check the status of survey distributions and responses.
+## Solution Pipeline & Usage Guide
 
-For survey distribution, the owner must create a "Surveys" PART and then create an issue under this PART to generate and send the survey to the mailing list. 
-On the analytics side, responses from the surveys are stored in MongoDB. A summary report is then generated and updated in batches, with the dashboard reflecting these updates at predetermined intervals. 
-
-The system offers real-time analysis capabilities, including sentiment analysis, identification of actionable issues, and ticket creation, all facilitated by large language models (LLMs). The system filters responses to identify actionable feedback and uses LLMs to assist in ticket management. This includes generating ticket titles, determining ticket severity, and selecting relevant PARTs for ticket submission, with other parameters sourced via DevRev API calls.
+1. The owner installs the snap-in in the DevRev platform. 
+2. We provide a configuration page for the snap-in where we provide the owner with option to customize various aspects of the survey form and the snap in. 
+    - We ask the owner to submit their PAT token which is used in a API call to create the mailing list.
+    - We then ask the user to modify various aspects of the survey form including changing the email through which the survey form will be sent, Name of the company, Name of the product and content of the survey form.  
+    - We also provide the user to configure the settings for the slack and PLuG integrations.
+    - We provide the owner with the option to select when the survey should be first distributed, how often it is distributed and how often the system should check the status of survey distributions and responses.
+3. For survey distribution, the owner must create a "Surveys" product (PART) and then create an issue under this PART to generate and send the survey to the mailing list. 
+4. The system offers real-time analysis capabilities, including sentiment analysis, identification of actionable issues, and ticket creation, all facilitated by large language models (LLMs). The system filters responses to identify actionable feedback and uses LLMs to assist in ticket management. This includes generating ticket titles, determining ticket severity, and selecting relevant PARTs for ticket submission, with other parameters sourced via DevRev API calls.
+5. On the analytics side, responses from the surveys are stored in MongoDB. A summary report is then generated and updated in batches, with the dashboard reflecting these updates at predetermined intervals. 
 
 ## Project Architecture
 
