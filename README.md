@@ -1,10 +1,6 @@
 
-# Next-Level NPS - Revolutionizing Feedback Mechanisms 
-
-## Team Details
-1. Team Name - **Team 15**
-2. Team Members - Varun Nagpal, Aditya Gupta, Parth Agarwal, Himanshu Singhal
-
+<h1 align="center">Next-Level NPS - Revolutionizing Feedback Mechanisms</h1>
+<h3 align = "center">Team Name - Team 15</h3>
 
 ## Introduction
 The challenge is to develop an AI-powered snap-in for NPS Survey collection, storage and analytics mechanisms. The solution leverage the capabilities of the DevRev platform, utilizing its APIs.
@@ -38,7 +34,19 @@ We've implemented an automated ticket generation system that works in real-time.
 ## Installation and Setup
 
 ### Installing the Snap-in
-Follow the instructions mentioned in the [Devrev Snap-in documentation](https://docs.devrev.ai/snap-ins/start#prerequisites) to install our snap-in<br>
+Follow the instructions mentioned in the [Devrev Snap-in documentation](https://docs.devrev.ai/snap-ins/start#prerequisites) to install our snap-in<br><br>
+Refer to `snap-in_env.txt` in our [Google Drive Submission](https://drive.google.com/drive/folders/1S6QwV1bT-YR1H58r7wc6rgeZJSqAYS5V?usp=sharing)<br>
+In the `snap-in` directory, go to `code/src/functions/function_1/env.ts` and change the API keys as follows.
+```
+export const SENDGRID_API_KEY = "insert SENDGRID_API_KEY here"
+.
+.
+.
+.
+.
+.
+export const GITHUB_AUTH = "insert GITHUB_AUTH here";
+```
 The code for our snap-in (in the format provided in the documentation) is available in the **snap-in folder** and here:<br>
 https://github.com/SpyzzVVarun/encode-devrev-snap-in 
 
@@ -71,19 +79,24 @@ https://github.com/Parth-Agarwal216/render-nps
 ## Solution Pipeline & Usage Guide
 
 1. The owner installs the snap-in in the DevRev platform. 
-2. We provide a configuration page for the snap-in where we provide the owner with option to customize various aspects of the survey form and the snap in. 
-    - We ask the owner to submit their PAT token which is used in an API call to create the mailing list.
-    - We then ask the owner to modify various aspects of the survey form including changing the email through which the survey form will be sent, name of the company, Name of the product and content of the survey form.  
-    - We also provide the owner to configure the settings for the slack and PLuG integrations.
+2. We provide a configuration page for the snap-in (for more details and customization refer to the manifest.yaml file) where we provide the owner with option to customize various aspects of the survey form and the snap in. 
+    - We ask the owner to submit their PAT token which is used in an API call to create the mailing list. We create the mailing list for the survey form using the `rev-users.list` API (other DevRev or personal APIs also possible) with filters and arguments that can be taken from the configuration page.
+    - We ask the owner to modify various aspects of the survey form including changing the email through which the survey form will be sent, name of the company, Name of the product and other content of the survey form for customizaton.  
+    - We also ask the owner to configure the settings for the slack and PLuG integrations.
     - We provide the owner with the option to select when the survey should be first distributed, how often it is distributed and how often the system should check the status of survey distributions and responses.
 
 
 https://github.com/SpyzzVVarun/encode/assets/118837763/47088d97-47ba-4fe7-9a75-5c47cdce422f
 
-3. For survey distribution, the owner must create a "Surveys" product (PART) and then create an issue under this PART to generate and send the survey to the mailing list. 
+3. For survey distribution, the owner must create a "Surveys" product (PART) and then create an issue under this PART to generate and send the survey to the mailing list. The link to the survey form and analytics dashboard is also made available to the survey form owner via ths issue discussion section.
 
-4. The system offers real-time analysis capabilities, including sentiment analysis, identification of actionable issues, and ticket creation, all facilitated by large language models (LLMs). The system filters responses to identify actionable feedback and uses LLMs to assist in ticket management. This includes generating ticket titles, determining ticket severity, and selecting relevant PARTs for ticket submission, with other parameters sourced via DevRev API calls.
-5. On the analytics side, responses from the surveys are stored in MongoDB. A summary report is then generated and updated in batches, with the dashboard reflecting these updates at predetermined intervals.
+4. The survey form has been created by us using MERN stack with various customizations in terms of the lines of questioning. We have also added a CAPTCHA functinality and honeypot fields to protect against spamming by automated bots. Responses from the surveys are stored in a MongoDB collection under the `DevRev-Surveys` database. The collection name for each survey is defined as the `companyName_servuct_index` where the index refers to the index of survey iteration (for periodic surveys) and servuct refers to the service/product name.
+
+5. Our solution offers real-time AI analysis capabilities, including sentiment analysis, identification of whether the reviews contain actionable insights, and automated ticket creation, all facilitated by large language models (LLMs). For every actionable response with a negative sentiment, a ticket will be created, in realtime,  using the `works.create` API where we have used LLMs to generate the title, its severity and figure out the PART it belongs to by getting the list of sub-parts of the part using the `parts-list` API whose survey is being conducted and prompting an LLM to figure out the exact part. Along with that we used several API calls to determine the other parameters that are to be filled like owned_by using `dev-users.self`. 
+
+7. On the analytics side, A summary/report is generated and updated in batches, with the dashboard reflecting these updates at predetermined intervals.
+The summary is created by LLMs to summarize the overall feedback. It is dynamically updated as new responses come in, keeping in mind old summary and new responses.
+Various basic statistics based on NPS responses are also available in the dashboard as can be seen in the demo video and dashboard video below.
 
 https://github.com/SpyzzVVarun/encode/assets/106423963/30db4bfb-3075-4810-aeeb-a4d47c11c73c
 
@@ -175,4 +188,13 @@ This directory contains the dashboard app code, which is deployed using render a
 
 ## Demo Video
 
-https://drive.google.com/file/d/17YharkmL-dOdl3Ja4BmUkyAkYfDPJRlZ/view?usp=sharing
+https://github.com/SpyzzVVarun/encode/assets/95134445/5c26fb84-8139-4f6e-afee-2c4435e4e915
+
+Link to Demo Video: https://drive.google.com/file/d/17YharkmL-dOdl3Ja4BmUkyAkYfDPJRlZ/view?usp=sharing
+
+## Team Members
+
+1. Varun Nagpal - [@SpyzzVVarun](https://github.com/SpyzzVVarun)
+2. Aditya Gupta - [@aditya-gupta-04](https://github.com/aditya-gupta-04)
+3. Himanshu Singhal - [@himanshu-skid19](https://github.com/himanshu-skid19)
+4. Parth Agarwal - [@Parth-Agarwal216](https://github.com/Parth-Agarwal216)
