@@ -16,9 +16,6 @@ The challenge is to develop an AI-powered snap-in for NPS Survey collection, sto
 Our aim here was to build a mechanism to create a customized NPS Survey and send it out at pre decided intervals to a pre decided audience and collect the survey results. Our NPS Survey form has different lines of questioning for promoters, passives and detractors along with several other customizations based on the inputs taken from the snap-in configuration page. We take as input the survey frequency and start date in the snap-in configuraton page. Based on configuration page inputs, we decide the filters (arguments) for the rev-users list api to determine the audience.
 
 
-https://github.com/SpyzzVVarun/encode/assets/118837763/47088d97-47ba-4fe7-9a75-5c47cdce422f
-
-
 ### 2. Meaningful Analytics & Insights
 
 We do sentiment analysis of the customer survey response and also determine if it has any actionable insights in real-time. A summary report of collected responses is maintained which is timely updated. This report highlights the specific key issues and their related features. We also highlight positive feedback and features which receive praises. A dashboard is provided to visualize the derived analytics, like nps score over time, distribution of promoters, passives and detractors and also wordclouds to focus on positive and negative feedback separately.
@@ -30,7 +27,7 @@ We've incorporated a CAPTCHA verification step at the start of our survey form t
 
 
 ### 4. Protecting Customer Information
-
+We create our own survey form using the MERN stack instead of a third-party survey creator. We also do not collect any demographic information from the responses and maintain our own database in MongoDB. Open-source LLMs that we deploy can be used to further ensure that customer information is protected.
 
 ### 5. Continuous Improvement Cycle.
 
@@ -80,11 +77,10 @@ https://github.com/Parth-Agarwal216/render-nps
     - We also provide the user to configure the settings for the slack and PLuG integrations.
     - We provide the owner with the option to select when the survey should be first distributed, how often it is distributed and how often the system should check the status of survey distributions and responses.
 
-![Snap-in Configuration Page](/assets/config_one.jpg) ![Snap-in Configuration Page](/assets/config_two.jpg)
+
+https://github.com/SpyzzVVarun/encode/assets/118837763/47088d97-47ba-4fe7-9a75-5c47cdce422f
 
 3. For survey distribution, the owner must create a "Surveys" product (PART) and then create an issue under this PART to generate and send the survey to the mailing list. 
-
-![Snap-in Configuration Page]("/assets/analytics_dashboard_(1).jpg")
 
 4. The system offers real-time analysis capabilities, including sentiment analysis, identification of actionable issues, and ticket creation, all facilitated by large language models (LLMs). The system filters responses to identify actionable feedback and uses LLMs to assist in ticket management. This includes generating ticket titles, determining ticket severity, and selecting relevant PARTs for ticket submission, with other parameters sourced via DevRev API calls.
 5. On the analytics side, responses from the surveys are stored in MongoDB. A summary report is then generated and updated in batches, with the dashboard reflecting these updates at predetermined intervals.
