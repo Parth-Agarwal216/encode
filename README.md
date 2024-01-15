@@ -164,20 +164,21 @@ https://github.com/SpyzzVVarun/encode/assets/106423963/30db4bfb-3075-4810-aeeb-a
 ```
 
 ### Snap-in 
-This directory follows the same structure as the templates provided in the resources. The main functions are in the `index.ts` file in the `function_1` directory. The `manifest.yaml` file contains the specifications for the configuration page
+This directory follows the same structure as the templates provided in the resources. 
+- The main modified code is in the `function_1` directory (`snap-in/code/src/functions/function_1/`). `index.ts` contains all the snap-in logic and `env.ts` stores some configuration constants.
+- The `manifest.yaml` file contains the specifications for the configuration page
 
 ### Survey-Form
 MERN-stack based survey form application
 
 `Backend` This directory contains the server-side code of your application.
-- `constants.json`  Likely a configuration file containing constant values used in the backend.
-- `server.js` The main server file which initializes and runs the backend server, handling API requests.
+- `constants.json`  A configuration file storing config values, survey name and the recieved PAT token used in the backend.
+- `server.js` The main server file which initializes and runs the backend server, handling API requests (LLM + DevRev).
 
 `Client` This directory is a standard `create-react-app` directory which contains the client-side code, which is what users interact with in their web browsers.
-- `SurveyComponent.jsx` A React component, the main component for rendering the survey form.
-- `constants.json` A configuration or settings file for the client-side.
-- `index.css` The main stylesheet for the web application.
-- `json.js` This could be a file handling JSON data, possibly related to the survey questions or configuration.
+- `SurveyComponent.jsx` A React component, the main component for rendering the captcha and survey form.
+- `constants.json` A configuration file for the client-side that stores the surevy form customizations based on configuration page inputs.
+- `index.css` The main stylesheet for the web application, centers the captcha and button div.
 
 ### Analytics Dashboard 
 This directory contains the dashboard app code, which is deployed using render app.
