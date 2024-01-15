@@ -7,6 +7,13 @@ import * as _ from './env'
 import { check } from 'yargs';
 sgMail.setApiKey(_.SENDGRID_API_KEY);
 
+/**
+ * Retrieves a mailing list from a specified API endpoint.
+ *
+ * @param {string} apiUrl - The URL of the API endpoint to fetch the mailing list from.
+ * @param {Record<string, string>} headers - Headers to include in the HTTP request.
+ * @returns {Promise<{ name: string; email: string }[]>} - A Promise that resolves to an array of mailing list entries containing name and email.
+ */
 async function createMailingList(apiUrl: string, headers: Record<string, string>): Promise<{ name: string; email: string }[]> {
   try {
     const response = await axios.get(apiUrl, { headers });
@@ -36,10 +43,20 @@ async function createMailingList(apiUrl: string, headers: Record<string, string>
   }
 }
 
+/**
+ * Sends an email to a specified recipient.
+ *
+ * @param {string} mailId - The email address of the recipient.
+ * @param {number} startDate - The start date for the email.
+ * @param {string} servuct - The name of the service/product.
+ * @param {string} companyName - The name of the company.
+ * @param {string} customerName - The name of the customer.
+ */
 async function sendMail(mailId: string, startDate: number, servuct: string, companyName: string, customerName: string) {
+  // Draft message
   const msg = {
-    to: mailId, // recipient email
-    from: _.mailSender, // verified sender
+    to: mailId,
+    from: _.mailSender,
     subject: `Share Your Experience with ${servuct} - Your Feedback Matters!`,
     // sendAt: startDate,
     html: `<p>Dear ${customerName},</p>
@@ -60,6 +77,13 @@ async function sendMail(mailId: string, startDate: number, servuct: string, comp
   }
 }
 
+/**
+ * Commits changes to a JSON file hosted in a GitHub repository. Used with the backend and client directories in our survey-form repository, 
+ * to update the parameters dependent on the config page inputs.
+ *
+ * @param {string} filePath - The path to the JSON file in the repository.
+ * @param {Record<string, any>} updates - Key-value pairs representing updates to be applied to the JSON file.
+ */
 async function commitJsonChange(filePath: string, updates: Record<string, any>) {
   
   const fetch = await import("node-fetch");
@@ -113,6 +137,7 @@ async function handleEvent(
     token: devrevPAT,
   })
 
+  // Extracting config page inputs
   const workCreated = event.payload.work_created.work;
   const startDate = event.input_data.global_values.start_date;
   const PAT = event.input_data.global_values.pat;
@@ -131,6 +156,8 @@ async function handleEvent(
   if (creatorName === undefined){
     creatorName = event.input_data.global_values.survey_config[0];
   }
+  
+  // Message to be sent by the DevRev bot in the issue discussion section
   let bodyComment = `
   Survey has been created by ${creatorName}.\n 
   Here is the Link to the Survey Form: ${_.surveyLink}.\n
@@ -172,6 +199,8 @@ async function handleEvent(
       const mailingList: { name: string; email: string }[] = await createMailingList(_.apiURL, headers);
       return mailingList;
   })();  
+
+  // If an issue is created under the part "Surveys"
   if ((workCreated.type == "issue" && mailingList[0].name !== "error" && workCreated.applies_to_part.name == "Surveys")){
     await commitJsonChange(jsonFilePathBackend, jsonUpdatesBackend);
     await commitJsonChange(jsonFilePathClient, jsonUpdatesClient);
